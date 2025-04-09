@@ -14,7 +14,8 @@ from typing import Optional, Callable, Any
 from collections import OrderedDict
 #from MambaCD.changedetection.models.ChangeDecoder import ChangeDecoder
 #from MambaCD.changedetection.models.ChangeDecoder_spatialMamba import ChangeDecoder
-from MambaCD.changedetection.models.ChangeDecoder_spatialMamba_GFM import ChangeDecoder
+#from MambaCD.changedetection.models.ChangeDecoder_spatialMamba_GFM import ChangeDecoder
+from MambaCD.changedetection.models.ChangeDecoder_spatialMamba_small import ChangeDecoder
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
