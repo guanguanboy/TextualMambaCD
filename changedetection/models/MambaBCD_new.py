@@ -3,6 +3,7 @@ import torch.nn.functional as F
 
 import torch
 import torch.nn as nn
+from MambaCD.changedetection.models.Spatial_Mamba_backbone import Backbone_SpatialMamba
 from MambaCD.changedetection.models.Mamba_backbone import Backbone_VSSM
 from MambaCD.classification.models.vmamba import VSSM, LayerNorm2d, VSSBlock, Permute
 import os
@@ -34,7 +35,7 @@ from fvcore.nn import FlopCountAnalysis, flop_count_str, flop_count, parameter_c
 class STMambaBCD(nn.Module):
     def __init__(self, pretrained, **kwargs):
         super(STMambaBCD, self).__init__()
-        self.encoder = Backbone_VSSM(out_indices=(0, 1, 2, 3), pretrained=pretrained, **kwargs)
+        self.encoder = Backbone_SpatialMamba(out_indices=(0, 1, 2, 3), pretrained=pretrained, **kwargs)
         
         _NORMLAYERS = dict(
             ln=nn.LayerNorm,

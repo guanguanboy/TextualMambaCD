@@ -292,9 +292,9 @@ class ResBlock(nn.Module):
 
         return out
 
-class ICSFBlock_backup(nn.Module):
+class ICSFBlock(nn.Module):
     def __init__(self, in_channels, out_channels, stride=1, downsample=None):
-        super(ICSFBlock_backup, self).__init__()
+        super(ICSFBlock, self).__init__()
         self.conv1 = nn.Conv2d(in_channels, out_channels, 3, stride=stride, padding=1, bias=False)
         self.bn1 = nn.BatchNorm2d(out_channels)
         self.dwconv = nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1, groups=out_channels, bias=False)
@@ -326,9 +326,9 @@ class ICSFBlock_backup(nn.Module):
         out = self.relu(out)
         return out
 
-class ICSFBlock(nn.Module):
+class ICSFBlock_new(nn.Module):
     def __init__(self, in_channels, out_channels, stride=1, downsample=None):
-        super(ICSFBlock, self).__init__()
+        super(ICSFBlock_new, self).__init__()
         self.conv1 = nn.Conv2d(in_channels, out_channels, 3, stride=stride, padding=1, bias=False)
         self.bn1 = nn.BatchNorm2d(out_channels)
         self.dwconv = nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1, groups=out_channels, bias=False)
@@ -457,8 +457,8 @@ class TransformerBlock(nn.Module):
 
         self.norm1 = LayerNorm(dim, LayerNorm_type)
         self.attn = Attention(dim, num_heads, bias)
-        #self.norm2 = LayerNorm(dim, LayerNorm_type)
-        #self.ffn = FeedForward(dim, ffn_expansion_factor, bias)
+        self.norm2 = LayerNorm(dim, LayerNorm_type)
+        self.ffn = FeedForward(dim, ffn_expansion_factor, bias)
 
     def forward(self, x):
         x = x + self.attn(self.norm1(x))

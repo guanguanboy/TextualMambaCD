@@ -423,13 +423,15 @@ class TransformerBlock(nn.Module):
     def __init__(self, dim, num_heads, ffn_expansion_factor, bias, LayerNorm_type):
         super(TransformerBlock, self).__init__()
 
-        self.norm1 = LayerNorm(dim, LayerNorm_type)
+        #self.norm1 = LayerNorm(dim, LayerNorm_type)
         self.attn = Attention(dim, num_heads, bias)
         #self.norm2 = LayerNorm(dim, LayerNorm_type)
         #self.ffn = FeedForward(dim, ffn_expansion_factor, bias)
 
     def forward(self, x):
-        x = x + self.attn(self.norm1(x))
+        #x = x + self.attn(self.norm1(x))
+        x = x + self.attn(x)
+
         #x = x + self.ffn(self.norm2(x))
 
         return x
