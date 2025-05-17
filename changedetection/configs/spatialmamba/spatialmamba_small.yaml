@@ -1,0 +1,10 @@
+MODEL:
+  TYPE: spatial_mamba
+  NAME: small
+  DROP_PATH_RATE: 0.3
+  SPATIALMAMBA:
+    EMBED_DIM: 64
+    DEPTHS: [ 2, 4, 21, 5]
+    D_STATE: 1
+    MLP_RATIO: 4.0
+    DT_INIT: 'random'
